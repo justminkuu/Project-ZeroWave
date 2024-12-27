@@ -9,13 +9,11 @@ function App() {
         <meta name="description" content="Sustainability and climate change project" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body>
-        <div className="main-container">
-          <h1>Welcome to Project ZeroWave</h1>
-          <p>This project aims to address sustainability and climate change.</p>
-          <button className="btn-primary">Learn More</button>
-        </div>
-      </body>
+        <body>
+          <div className="text-3xl text-center text-blue-500">
+              ZeroWave
+          </div>
+        </body>
     </div>
   );
 }
