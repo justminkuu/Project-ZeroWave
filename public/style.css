@@ -1,0 +1,102 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+  }
+  
+
+  #loader-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    position: relative;
+    top: -80px;
+  }
+  
+  #logo {
+    height: 200px;
+  }
+  
+  #loader {
+    height: 43px;
+    position: relative;
+    top: 130px;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out 1s forwards, spin 1s linear infinite;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }  
+  
+#login-screen {
+    display: none; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  #login-logo {
+    height: 150px;
+    margin-bottom: 20px;
+  }
+  
+  #login-form input {
+    padding: 6px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 12px;
+  width: 242px;
+  color:black;
+  font-size: 14px;
+  background-color: rgb(212, 210, 210);
+  position: relative;
+  top: 15px;
+  }
+
+  #login-form input::placeholder
+  {
+    text-align: left;
+    font-family: Geist Mono;
+    font-size: 16px;
+    
+  }
+
+  #login-form input:focus
+  {
+    outline: none;
+    
+  }
+
+  #enter
+  {
+    height: 25px;
+  position: relative;
+  top: -28px;
+  left: 210px;
+  opacity: 0.6;
+  cursor: pointer;
+  }
+
+  .username
+  {
+    font-size: 24px;
+  position: relative;
+  top: -7px;
+  font-family: profeshhh;
+  opacity: 0.8;
+  color: white;
+  }
+  
+ 
+  
+ 
