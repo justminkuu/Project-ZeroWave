@@ -1,0 +1,37 @@
+{
+    "articles": [
+        {
+            "title": "Google's \u2018A Passage of Water' Brings NASA's Water Data to Life ",
+            "url": "https://climate.nasa.gov/news/3293/",
+            "thumbnail": "https://m.eyeofriyadh.com/news_images/2020/05/22c6626e162b1.jpg",
+            "published": "2023-11-30T17:50:23.000Z",
+            "source": "Nasa Climate"
+        },
+        {
+            "title": "NASA to Showcase Earth Science Data at COP28",
+            "url": "https://climate.nasa.gov/news/3292/",
+            "thumbnail": "https://m.eyeofriyadh.com/news_images/2020/05/22c6626e162b1.jpg",
+            "published": "2023-11-28T00:05:44.000Z",
+            "source": "Nasa Climate"
+        },
+        {
+            "title": "NASA Analysis Finds Strong El Ni\u00f1o Could Bring Extra Floods This Winter",
+            "url": "https://climate.nasa.gov/news/3291/",
+            "thumbnail": "https://climate.nasa.gov/internal_resources/2740/sea_level_anomaly_data_from_SWOT.png/image/large.png",
+            "published": "2023-11-08T19:46:30.000Z",
+            "source": "Nasa Climate"
+        },
+        {
+            "title": "NASA Flights Link Methane Plumes to Tundra Fires in Western Alaska",
+            "url": "https://climate.nasa.gov/news/3289/",
+            "thumbnail": "https://climate.nasa.gov/internal_resources/2736/Photo_of_methane_bubbles.jpeg/image/large.png",
+            "published": "2023-11-02T15:57:00.000Z",
+            "source": "Nasa Climate"
+        }
+    ],
+    "meta": {
+        "currentPage": 1,
+        "totalPages": 7,
+        "totalArticles": 31
+    }
+}

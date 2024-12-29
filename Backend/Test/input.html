@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend-Backend connector -BioBuddy</title>
+</head>
+<body>
+    <!-- Signup Dialog -->
+    <div class="container" id="container">
+        <form id="user">
+            <input type="text" id="prompt" required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    
+    <script>
+
+
+        // Handle Signup form submission
+        document.getElementById("user").addEventListener("submit", async (e) => {
+            e.preventDefault(); // Prevent form from refreshing the page
+
+            // Get input values
+            const prompt = document.getElementById("prompt").value;
+
+            // Validate fields
+
+            // Prepare data to send
+            const userData = {
+                user: prompt
+            };
+
+            try {
+                const response = await fetch("http://127.0.0.1:5000", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json"},
+                    body: JSON.stringify(userData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    showAlert(result.message, false); // Success alert
+                } else {
+                    showAlert("Error: " + result.error, true); // Error alert
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                showAlert("An error occurred while submitting the form.", true);
+            }
+        });
+
+    </script>
+</body>
+</html>
