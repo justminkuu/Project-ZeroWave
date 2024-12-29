@@ -3,136 +3,101 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Top 4 News</title>
+  <title>News Page</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f4f4f4;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    h1 {
-      text-align: center;
-      color: #333;
-    }
-
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-
+    /* Basic Styling for News Cards */
     .news-card {
       background: rgba(255, 255, 255, 0.8);
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       overflow: hidden;
-      transition: transform 0.3s ease;
+      margin: 20px;
+      padding: 15px;
+      width: 100%; /* Make the card width 100% of the container */
+      box-sizing: border-box; /* Include padding and margin in the total width */
     }
 
-    .news-card:hover {
-      transform: scale(1.05);
-    }
-
+    /* Thumbnail Styling */
     .thumbnail {
       width: 100%;
       height: 200px;
       object-fit: cover;
     }
 
-    .news-info {
-      padding: 15px;
-    }
-
-    .title {
-      font-size: 18px;
-      color: #333;
-      margin-bottom: 10px;
-    }
-
-    .meta {
-      font-size: 14px;
-      color: #555;
-      margin-bottom: 10px;
-    }
-
+    /* Read More Link Styling */
     .read-more {
-      display: inline-block;
       margin-top: 10px;
-      padding: 10px 15px;
-      background: #007BFF;
+      display: inline-block;
+      padding: 10px;
+      background-color: #007BFF;
       color: white;
       text-decoration: none;
       border-radius: 5px;
-      transition: background 0.3s ease;
     }
 
     .read-more:hover {
-      background: #0056b3;
+      background-color: #0056b3;
+    }
+
+    /* Flexbox for News Container */
+    #news-container {
+      display: flex;
+      flex-wrap: wrap; /* Allow wrapping of items to the next line */
+      justify-content: space-between; /* Add space between the cards */
+    }
+
+    /* Make sure each card takes up about 30% of the container width */
+    .news-card {
+      flex: 0 0 30%; /* This makes each card take up 30% of the width */
+    }
+
+    /* Responsive Design for Smaller Screens */
+    @media (max-width: 768px) {
+      .news-card {
+        flex: 0 0 45%; /* On smaller screens, cards take up 45% of the width */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .news-card {
+        flex: 0 0 100%; /* On very small screens, cards take up full width */
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Top 4 News</h1>
-    <div class="news-grid">
-      <!-- News Card 1 -->
-      <div class="news-card">
-        <img src="https://via.placeholder.com/150" alt="Thumbnail" class="thumbnail">
-        <div class="news-info">
-          <h2 class="title">News Title 1</h2>
-          <p class="meta">Published on: <span class="date">2024-12-29</span></p>
-          <p class="meta">Source: <span class="source">Source 1</span></p>
-          <a href="https://example.com/article1" class="read-more" target="_blank">Read Full Article</a>
-        </div>
-      </div>
+  <h1>Top News</h1>
+  <div id="news-container"></div>
 
-      <!-- News Card 2 -->
-      <div class="news-card">
-        <img src="https://via.placeholder.com/150" alt="Thumbnail" class="thumbnail">
-        <div class="news-info">
-          <h2 class="title">News Title 2</h2>
-          <p class="meta">Published on: <span class="date">2024-12-28</span></p>
-          <p class="meta">Source: <span class="source">Source 2</span></p>
-          <a href="https://example.com/article2" class="read-more" target="_blank">Read Full Article</a>
-        </div>
-      </div>
-
-      <!-- News Card 3 -->
-      <div class="news-card">
-        <img src="https://via.placeholder.com/150" alt="Thumbnail" class="thumbnail">
-        <div class="news-info">
-          <h2 class="title">News Title 3</h2>
-          <p class="meta">Published on: <span class="date">2024-12-27</span></p>
-          <p class="meta">Source: <span class="source">Source 3</span></p>
-          <a href="https://example.com/article3" class="read-more" target="_blank">Read Full Article</a>
-        </div>
-      </div>
-
-      <!-- News Card 4 -->
-      <div class="news-card">
-        <img src="https://via.placeholder.com/150" alt="Thumbnail" class="thumbnail">
-        <div class="news-info">
-          <h2 class="title">News Title 4</h2>
-          <p class="meta">Published on: <span class="date">2024-12-26</span></p>
-          <p class="meta">Source: <span class="source">Source 4</span></p>
-          <a href="https://example.com/article4" class="read-more" target="_blank">Read Full Article</a>
-        </div>
-      </div>
-    </div>
-  </div>
   <script>
-    // Placeholder for dynamic news loading
-    console.log("News page loaded");
+    // Fetch the JSON data
+    fetch('news.json')
+      .then(response => response.json())  // Parse JSON data
+      .then(data => {
+        // Get the container to display the news
+        const newsContainer = document.getElementById('news-container');
+        
+        // Loop through the news items and create a card for each
+        data.articles.forEach(newsItem => {
+          const newsCard = document.createElement('div');
+          newsCard.classList.add('news-card');
+
+          // Add thumbnail, title, date, source, and URL
+          newsCard.innerHTML = `
+            <img src="${newsItem.thumbnail}" alt="Thumbnail" class="thumbnail">
+            <h2>${newsItem.title}</h2>
+            <p>Published on: ${newsItem.published}</p>
+            <p>Source: ${newsItem.source}</p>
+            <a href="${newsItem.url}" class="read-more" target="_blank">Read Full Article</a>
+          `;
+
+          // Append the card to the container
+          newsContainer.appendChild(newsCard);
+        });
+      })
+      .catch(error => {
+        console.error('Error loading JSON data:', error);
+      });
   </script>
 </body>
 </html>
